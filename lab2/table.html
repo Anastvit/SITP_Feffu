@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Сравнение основных моделей смартфонов</title>
+</head>
+
+<body>
+    <hr size="3" noshade>
+    <a href="main.html">Вернуться на главную</a>
+    <hr size="3" noshade>
+
+    <div>
+        <details>
+            <summary>
+                График
+            </summary>
+            <table>
+                <tr>
+                    <td>
+                        <h4>Значение по OX</h4>
+                        <p><input type="radio">Основная камера</p>
+                        <p><input type="radio">Фронтальная камера</p>
+                    </td>
+                    <td>
+                        <h4>Результат</h4>
+                        <p><input type="checkbox">Емкость аккумулятора</p>
+                        <p><input type="checkbox">Встроенная память</p>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" value="Построить график">
+        </details>
+
+        <details>
+            <summary> Фильтр </summary>
+            <form>
+                <p><label>Производитель:
+                        <input type="text" name="prod" id="prod"><br>
+                    </label></p>
+
+                <p><label>Основная камера:
+                        <input type="text" name="maincam" id="maincam"><br>
+                    </label></p>
+
+                <p><label>Фронтальная камера:
+                        <input type="text" name="frontcam" id="frontcam"><br>
+                    </label></p>
+
+                <p>Размер дисплея:
+                    <label>от
+                        <input type="text" name="min" id="min">
+                    </label>
+                    <label>до
+                        <input type="text" name="max" id="max"><br>
+                    </label>
+                </p>
+
+                <input type="submit" value="Найти">
+            </form>
+        </details>
+
+        <details>
+            <summary> Сортировка </summary>
+            <form>
+                <label for="sort-by">Первый уровень:</label>
+                <select>
+                    <option value="year">Размер дисплея</option>
+                    <option value="processor-type">Основная камера</option>
+                    <option value="cores">Фронтальная камера</option>
+                    <option value="base-frequency">Встроенная память</option>
+                    <option value="cache-l1">Аккумулятор</option>
+                </select>
+
+                <label for="sort-order">Порядок сортировки:</label>
+                <select>
+                    <option value="asc">По возрастанию</option>
+                    <option value="desc">По убыванию</option>
+                </select>
+                <input type="submit" value="Сортировать">
+            </form>
+            <form>
+                <label for="sort-by">Второй уровень:</label>
+                <select>
+                    <option value="year">Размер дисплея</option>
+                    <option value="processor-type">Основная камера</option>
+                    <option value="cores">Фронтальная камера</option>
+                    <option value="base-frequency">Встроенная память</option>
+                    <option value="cache-l1">Аккумулятор</option>
+                </select>
+
+                <label for="sort-order">Порядок сортировки:</label>
+                <select>
+                    <option value="asc">По возрастанию</option>
+                    <option value="desc">По убыванию</option>
+                </select>
+                <input type="submit" value="Сортировать">
+            </form>
+            <form>
+                <label for="sort-by">Третий уровень:</label>
+                <select>
+                    <option value="year">Размер дисплея</option>
+                    <option value="processor-type">Основная камера</option>
+                    <option value="cores">Фронтальная камера</option>
+                    <option value="base-frequency">Встроенная память</option>
+                    <option value="cache-l1">Аккумулятор</option>
+                </select>
+
+                <label for="sort-order">Порядок сортировки:</label>
+                <select>
+                    <option value="asc">По возрастанию</option>
+                    <option value="desc">По убыванию</option>
+                </select>
+                <input type="submit" value="Сортировать">
+            </form>
+        </details>
+    </div>
+    <hr size="3" noshade>
+
+    <div>
+        <table border="1" cellspacing="0" cellpadding="5">
+            <tr>
+                <th>Производитель</th>
+                <th>Модель</th>
+                <th>Размер дисплея (дюйм)</th>
+                <th>Матрица</th>
+                <th>Основная камера (МП)</th>
+                <th>Фронтальная камера (МП)</th>
+                <th>Оперативная/встроенная память (Гб)</th>
+                <th>Аккумулятор</th>
+            </tr>
+            <tr>
+                <td>Apple</td>
+                <td>iPhone 14 Pro Max</td>
+                <td>6,7</td>
+                <td>OLED</td>
+                <td>48</td>
+                <td>12</td>
+                <td>1024</td>
+                <td>4323</td>
+            </tr>
+            <tr>
+                <td>Samsung</td>
+                <td>Galaxy S22 Ultra</td>
+                <td>6,8</td>
+                <td>AMOLED</td>
+                <td>108</td>
+                <td>40</td>
+                <td>1024</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Xiaomi</td>
+                <td>12S Ultra</td>
+                <td>6,73 </td>
+                <td>AMOLED</td>
+                <td>50</td>
+                <td>32</td>
+                <td>512</td>
+                <td>4860</td>
+            </tr>
+            <tr>
+                <td>Google</td>
+                <td>Pixel 7 Pro</td>
+                <td>6,7</td>
+                <td>AMOLED</td>
+                <td>50</td>
+                <td>10</td>
+                <td>512</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Honor</td>
+                <td>70</td>
+                <td>6,67</td>
+                <td>AMOLED</td>
+                <td>54</td>
+                <td>32</td>
+                <td>256</td>
+                <td>4800</td>
+            </tr>
+            <tr>
+                <td>POCO</td>
+                <td>F4 GT</td>
+                <td>6,67</td>
+                <td>AMOLED</td>
+                <td>64</td>
+                <td>20</td>
+                <td>256</td>
+                <td>4700 </td>
+            </tr>
+            <tr>
+                <td>Huawei</td>
+                <td>Nova 10 Pro</td>
+                <td>6,78</td>
+                <td>Super AMOLED</td>
+                <td>50</td>
+                <td>60</td>
+                <td>256</td>
+                <td>4500</td>
+            </tr>
+            <tr>
+                <td>Infinix</td>
+                <td>Note 12 Pro</td>
+                <td>6,7 </td>
+                <td>AMOLED</td>
+                <td>108</td>
+                <td>16</td>
+                <td>256</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Vivo</td>
+                <td>T1</td>
+                <td>6,44</td>
+                <td>AMOLED</td>
+                <td>50</td>
+                <td>16</td>
+                <td>128</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Realme</td>
+                <td>C31</td>
+                <td>6,5 </td>
+                <td>PLS</td>
+                <td>13</td>
+                <td>5</td>
+                <td>64</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Xiaomi</td>
+                <td>12T Pro</td>
+                <td>6,67</td>
+                <td>AMOLED</td>
+                <td>200</td>
+                <td>20</td>
+                <td>256</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Samsung</td>
+                <td>Galaxy Z Flip3</td>
+                <td>6.7</td>
+                <td>AMOLED</td>
+                <td>12</td>
+                <td>10</td>
+                <td>128</td>
+                <td>3300</td>
+            </tr>
+            <tr>
+                <td>Samsung</td>
+                <td>Galaxy A33</td>
+                <td>6.4</td>
+                <td>AMOLED</td>
+                <td>48</td>
+                <td>13</td>
+                <td>128</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Xiaomi</td>
+                <td>Poco M4 Pro</td>
+                <td>6.6</td>
+                <td>IPS</td>
+                <td>50</td>
+                <td>16</td>
+                <td>64</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Apple</td>
+                <td>iPhone 13</td>
+                <td>6.1</td>
+                <td>OLED</td>
+                <td>12</td>
+                <td>12</td>
+                <td>128</td>
+                <td>3240</td>
+            </tr>
+            <tr>
+                <td>Realme</td>
+                <td>GT Master Edition</td>
+                <td>6.4</td>
+                <td>AMOLED</td>
+                <td>64</td>
+                <td>32</td>
+                <td>256</td>
+                <td>4300</td>
+            </tr>
+            <tr>
+                <td>Xiaomi</td>
+                <td>11T</td>
+                <td>6.67</td>
+                <td>Super AMOLED</td>
+                <td>108</td>
+                <td>16</td>
+                <td>128</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Samsung</td>
+                <td>Galaxy A52</td>
+                <td>6.5</td>
+                <td>Super AMOLED</td>
+                <td>64</td>
+                <td>32</td>
+                <td>128</td>
+                <td>4500</td>
+            </tr>
+            <tr>
+                <td>Xiaomi</td>
+                <td>POCO F3</td>
+                <td>6.67</td>
+                <td>AMOLED</td>
+                <td>48</td>
+                <td>20</td>
+                <td>256</td>
+                <td>4520</td>
+            </tr>
+            <tr>
+                <td>Realme</td>
+                <td>9 Pro</td>
+                <td>6.6</td>
+                <td>IPS</td>
+                <td>64</td>
+                <td>16</td>
+                <td>128</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Samsung</td>
+                <td>Galaxy S20 FE</td>
+                <td>6.5</td>
+                <td>Super AMOLED</td>
+                <td>12</td>
+                <td>32</td>
+                <td>256</td>
+                <td>4500</td>
+            </tr>
+            <tr>
+                <td>Samsung</td>
+                <td>Galaxy A23</td>
+                <td>6.5</td>
+                <td>PLS</td>
+                <td>50</td>
+                <td>8</td>
+                <td>64</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Realme</td>
+                <td>Narzo 50A</td>
+                <td>6.5</td>
+                <td>IPS</td>
+                <td>50</td>
+                <td>8</td>
+                <td>64</td>
+                <td>5860</td>
+            </tr>
+            <tr>
+                <td>Xiaomi</td>
+                <td>Redmi 10C</td>
+                <td>6.71</td>
+                <td>IPS</td>
+                <td>50</td>
+                <td>5</td>
+                <td>64</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Xiaomi</td>
+                <td>Redmi S2</td>
+                <td>5.99</td>
+                <td>IPS</td>
+                <td>12</td>
+                <td>16</td>
+                <td>64</td>
+                <td>3080</td>
+            </tr>
+            <tr>
+                <td>HUAWEI</td>
+                <td>Y5p</td>
+                <td>5.45</td>
+                <td>IPS</td>
+                <td>8</td>
+                <td>5</td>
+                <td>32</td>
+                <td>3080</td>
+            </tr>
+            <tr>
+                <td>DOOGEE</td>
+                <td>S40 Pro</td>
+                <td>5,4</td>
+                <td>IPS</td>
+                <td>13</td>
+                <td>2</td>
+                <td>64</td>
+                <td>3000</td>
+            </tr>
+            <tr>
+                <td>Blackview</td>
+                <td>BV9800 Pro</td>
+                <td>6.3</td>
+                <td>IPS</td>
+                <td>48</td>
+                <td>16</td>
+                <td>128</td>
+                <td>6580</td>
+            </tr>
+            <tr>
+                <td>Caterpillar</td>
+                <td>Cat S61</td>
+                <td>5.2</td>
+                <td>IPS</td>
+                <td>16</td>
+                <td>8</td>
+                <td>64</td>
+                <td>4500</td>
+            </tr>
+            <tr>
+                <td>DOOGEE</td>
+                <td>S97 Pro</td>
+                <td>6.39</td>
+                <td>OLED</td>
+                <td>48</td>
+                <td>16</td>
+                <td>128</td>
+                <td>8500</td>
+            </tr>
+            <tr>
+                <td>Ulefone</td>
+                <td>Power Armor 14</td>
+                <td>6.52</td>
+                <td>IPS</td>
+                <td>20</td>
+                <td>16</td>
+                <td>64</td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td>BQ</td>
+                <td>6645L Element</td>
+                <td>6.52</td>
+                <td>IPS</td>
+                <td>13</td>
+                <td>5</td>
+                <td>32</td>
+                <td>4000</td>
+            </tr>
+            <tr>
+                <td>BQ</td>
+                <td>5765L Clever</td>
+                <td>5.7</td>
+                <td>IPS</td>
+                <td>5</td>
+                <td>2</td>
+                <td>16</td>
+                <td>2700</td>
+            </tr>
+            <tr>
+                <td>BQ</td>
+                <td>6630L Magic L</td>
+                <td>6.53</td>
+                <td>IPS</td>
+                <td>13</td>
+                <td>8</td>
+                <td>32</td>
+                <td>4920</td>
+            </tr>
+            <tr>
+                <td>HONOR</td>
+                <td>X8</td>
+                <td>6.7</td>
+                <td>LTPS</td>
+                <td>64</td>
+                <td>16</td>
+                <td>128</td>
+                <td>4000</td>
+            </tr>
+            <tr>
+                <td>Nokia</td>
+                <td>G50</td>
+                <td>6.82</td>
+                <td>IPS</td>
+                <td>48</td>
+                <td>8</td>
+                <td>128</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>OPPO</td>
+                <td>Reno 5 Lite</td>
+                <td>6.43</td>
+                <td>AMOLED</td>
+                <td>48</td>
+                <td>32</td>
+                <td>128</td>
+                <td>4310</td>
+            </tr>
+            <tr>
+                <td>HUAWEI</td>
+                <td>P20 Pro</td>
+                <td>6.1</td>
+                <td>AMOLED</td>
+                <td>40</td>
+                <td>24</td>
+                <td>64</td>
+                <td>4000</td>
+            </tr>
+            <tr>
+                <td>Xiaomi</td>
+                <td>11 Lite 5G</td>
+                <td>6.67</td>
+                <td>Super AMOLED</td>
+                <td>64</td>
+                <td>20</td>
+                <td>128</td>
+                <td>4250</td>
+            </tr>
+            <tr>
+                <td>BQ</td>
+                <td>6631G Surf</td>
+                <td>6.53</td>
+                <td>IPS</td>
+                <td>8</td>
+                <td>2</td>
+                <td>16</td>
+                <td>3000</td>
+            </tr>
+            <tr>
+                <td>Samsung</td>
+                <td>Galaxy A02</td>
+                <td>6.5</td>
+                <td>PLS</td>
+                <td>13</td>
+                <td>5</td>
+                <td>32</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Xiaomi</td>
+                <td>Redmi 9A</td>
+                <td>6.53</td>
+                <td>IPS</td>
+                <td>13</td>
+                <td>5</td>
+                <td>32</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>TCL</td>
+                <td>20E</td>
+                <td>6.52</td>
+                <td>IPS</td>
+                <td>13</td>
+                <td>5</td>
+                <td>64</td>
+                <td>4000</td>
+            </tr>
+            <tr>
+                <td>OPPO</td>
+                <td>A16</td>
+                <td>6.52</td>
+                <td>IPS</td>
+                <td>13</td>
+                <td>8</td>
+                <td>32</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Xiaomi</td>
+                <td>Redmi 6A</td>
+                <td>5.45</td>
+                <td>IPS</td>
+                <td>13</td>
+                <td>5</td>
+                <td>16</td>
+                <td>3000</td>
+            </tr>
+            <tr>
+                <td>Xiaomi</td>
+                <td>Redmi 9</td>
+                <td>6.53</td>
+                <td>IPS</td>
+                <td>13</td>
+                <td>8</td>
+                <td>64</td>
+                <td>5020</td>
+            </tr>
+            <tr>
+                <td>Realme</td>
+                <td>C21Y</td>
+                <td>6.5</td>
+                <td>IPS</td>
+                <td>13</td>
+                <td>5</td>
+                <td>32</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Samsung</td>
+                <td>Galaxy A12</td>
+                <td>6.5</td>
+                <td>PLS</td>
+                <td>48</td>
+                <td>8</td>
+                <td>32</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Apple</td>
+                <td>iPhone 13 Pro</td>
+                <td>6.1</td>
+                <td>OLED</td>
+                <td>12</td>
+                <td>12</td>
+                <td>128</td>
+                <td>3240</td>
+            </tr>
+            <tr>
+                <td>Samsung</td>
+                <td>Galaxy A53</td>
+                <td>6.5</td>
+                <td>Super AMOLED</td>
+                <td>64</td>
+                <td>32</td>
+                <td>128</td>
+                <td>5000</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
