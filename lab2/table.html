@@ -16,20 +16,34 @@
             <summary>
                 График
             </summary>
+            <form>
             <table>
                 <tr>
                     <td>
                         <h4>Значение по OX</h4>
-                        <p><input type="radio">Основная камера</p>
-                        <p><input type="radio">Фронтальная камера</p>
                     </td>
                     <td>
                         <h4>Результат</h4>
-                        <p><input type="checkbox">Емкость аккумулятора</p>
-                        <p><input type="checkbox">Встроенная память</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label><input type="radio" name="graph">Производитель</label></td>
+                    <td>
+                        <p><input type="checkbox">Максимальная емкость</p>
+                        <p><input type="checkbox">Среднеее значение оперативной памяти</p>                        
+                    </td>
+                </tr>
+                <tr>        
+                    <td>    
+                        <label><input type="radio" name="graph">Матрица</label>
+                    </td>
+                    <td>
+                        <p><input type="checkbox">Минимальная емкость аккумулятора</p>
+                        <p><input type="checkbox">Максимальный размер дисплея</p>
                     </td>
                 </tr>
             </table>
+            </form>
             <input type="submit" value="Построить график">
         </details>
 
