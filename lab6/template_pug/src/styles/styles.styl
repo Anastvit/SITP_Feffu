@@ -1,0 +1,313 @@
+colorGr = gray
+colorBl = black
+
+body
+  font-family 'Roboto', sans-serif
+  background-color: #f4f4f4
+
+.navbar
+  height 5vh
+  display flex
+  justify-content space-between
+  padding 0.8%
+  background-color lightgray
+  align-items stretch
+
+.logo
+  display flex
+  align-items center
+  font-size 1em
+  text-transform uppercase
+  font-family 'Roboto', sans-serif
+
+.menu
+  display flex
+  justify-content space-around
+  align-items stretch
+  width 50%
+
+  a
+    color white
+    background-color colorGr
+    flex-basis 10%
+    padding 1%
+    margin 0 1%
+    text-decoration none
+    flex-grow 1
+    display flex
+    align-items center
+    justify-content center
+    &:hover
+      background-color colorBl
+
+.gallery 
+  display: grid;
+  grid-template-columns: 15% 35% 35% 15%;
+  gap: 0.5%;
+  width: 90%;
+  margin: auto;
+
+  img 
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    &:hover 
+      transform scale(1.1)
+      z-index 1
+    
+.bar
+  display flex
+  background-color colorGr
+  height 3vh
+
+.input-block
+  display flex
+  width 70%
+  margin-left 0.25%
+  justify-content space-between
+  align-items center
+
+.search-icon
+  margin-left 1%  
+
+
+footer
+  background colorGr
+
+  span
+    float right   
+
+.content
+  width 80%
+  margin 0 auto
+
+  h2
+    text-align center
+
+  .description
+    margin 1%   
+
+.top
+  background rgba(190, 190, 190, 0.2)
+  vertical-align top
+  margin 1%
+  display flex
+  flex-direction row-reverse
+  padding 1%
+  justify-content center
+  border-radius 15px
+  box-shadow 0px 8px 15px rgba(0, 0, 0, 0.1)
+  transition all 0.3s ease 0s
+  text-align center
+
+  ul
+    list-style none
+
+  &:hover
+    background rgba(190, 190, 190, 0.7)
+    box-shadow 0px 15px 20px rgba(0, 0, 0, 0.3)
+    transform translateY(-7px)
+
+  img
+    width 20%
+    height 20vh
+    float right
+    object-fit cover
+    margin auto 0
+    transition transform 0.3s ease
+
+  h4
+    text-align center
+    margin-top 0
+    margin-bottom @margin-top
+
+  p
+    margin 0
+
+.bottom
+  background rgba(190, 190, 190, 0.2)
+  border-color rgba(190, 190, 190, 0.5)
+  vertical-align top
+  margin 1%
+  display flex
+  flex-direction row
+  padding 1%
+  justify-content center
+  border-radius 15px
+  box-shadow 0px 8px 15px rgba(0, 0, 0, 0.1)
+  transition all 0.3s ease 0s
+  text-align center
+
+  ul
+    list-style none
+
+  &:hover
+    background rgba(190, 190, 190, 0.7)
+    box-shadow 0px 15px 20px rgba(0, 0, 0, 0.3)
+    transform translateY(-7px)
+
+  img
+    width 20%
+    height 20vh
+    float left
+    object-fit cover
+    margin auto 0
+    transition transform 0.3s ease
+
+  h4
+    text-align center
+    margin-top 0
+    margin-bottom @margin-top
+
+  p
+    margin 0
+
+.text-top, .text-bottom
+  display flex
+  flex-direction column
+
+.tab
+  border-collapse collapse
+  width 100%
+  margin 20px 0
+
+  .trow
+    &:nth-child(even)
+      background-color #f2f2f2
+
+    &:hover
+      background-color #ddd
+
+  .tdow
+    border 1px solid #ddd
+    padding 8px
+    text-align center
+
+.form
+  width 60%
+  padding 20px
+  box-sizing border-box
+
+details
+  margin-bottom 20px
+
+summary, select
+  font-size 1.2em
+  margin-bottom 10px
+
+form
+  display flex
+  flex-direction column
+
+table
+  width 100%
+  border-collapse collapse
+  margin-bottom 20px
+
+tr
+  &:nth-child(even)
+    background-color #f2f2f2
+
+td
+  border 1px solid #ddd
+  padding 8px
+  text-align left
+
+h4
+  font-size 1em
+  margin-bottom 5px
+
+input[type="radio"],
+input[type="checkbox"]
+  margin-right 10px
+
+input[type="text"]
+  width 100%
+  padding 5px
+  box-sizing border-box
+
+input[type="submit"]
+  margin-top 20px
+  padding 10px
+  background-color #4CAF50
+  color white
+  border none
+  cursor pointer
+
+  &:hover
+    background-color #45a049
+
+.input-block, .barI
+  width 100%
+  border none
+  height 85%
+  margin auto 0
+  margin-left 0.1%
+
+h2
+  color #444
+  background-color #ddd
+  padding 10px
+  border-radius 5px
+  font-size 2em
+  text-align center
+  margin-top 30px
+
+.container
+  display flex
+  justify-content space-between
+  align-items flex-start
+  flex-wrap wrap
+
+.text, .image
+  flex 1 1 45%
+  margin auto 0
+
+.image
+  img
+    width 50%
+    height auto
+    object-fit cover
+
+h2
+  width 100%
+  text-align center
+
+@media screen and (max-width: 600px)
+  body
+    font-size 75%
+
+  .navbar, .logo, .menu, .gallery, .bar, .input-block, .search-icon, footer, .content, .top, .bottom, .text-top, .text-bottom, .form, .container, .text, .image
+    flex-direction column
+    align-items center
+    justify-content center
+    width 100%
+
+  .logo
+    margin-top 10px
+
+  .bar
+    margin-bottom 10px
+
+  .menu
+    a
+      width 100%
+      margin 5px 0  
+
+  table, tr, td
+    width 100%
+    text-align center
+
+  input[type="text"], input[type="submit"]
+    width 100%
+
+  .gallery
+    display none
+
+  .logo
+    display none  
+
+  .form
+    margin-top 10%  
+

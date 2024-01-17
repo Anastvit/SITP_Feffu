@@ -1,0 +1,120 @@
+- var dataTable=[   ["Производитель","Модель","Размер дисплея (дюйм)","Матрица","Основная камера (МП)","Фронтальная камера (МП)","Оперативная/встроенная память (Гб)","Аккумулятор"  ],["Apple","iPhone 14 Pro Max","6,7","OLED",48,12,1024,4323  ], ["Samsung","Galaxy S22 Ultra","6,8","AMOLED",108,40,1024,5000  ], ["Xiaomi","12S Ultra","6,73","AMOLED",50,32,512,4860  ], ["Google","Pixel 7 Pro","6,7","AMOLED",50,10,512,5000  ], ["Honor","70","6,67","AMOLED",54,32,256,4800  ], ["POCO","F4 GT","6,67","AMOLED",64,20,256,4700  ], ["Huawei","Nova 10 Pro","6,78","Super AMOLED",50,60,256,4500  ], ["Infinix","Note 12 Pro","6,7","AMOLED",108,16,256,5000  ], ["Vivo","T1","6,44","AMOLED",50,16,128,5000  ], ["Realme","C31","6,5","PLS",13,5,64,5000  ], ["Xiaomi","12T Pro","6,67","AMOLED",200,20,256,5000  ], ["Samsung","Galaxy Z Flip3","6.7","AMOLED",12,10,128,3300  ], ["Samsung","Galaxy A33","6.4","AMOLED",48,13,128,5000  ], ["Xiaomi","Poco M4 Pro","6.6","IPS",50,16,64,5000  ], ["Apple","iPhone 13","6.1","OLED",12,12,128,3240  ], ["Realme","GT Master Edition","6.4","AMOLED",64,32,256,4300  ], ["Xiaomi","11T","6.67","Super AMOLED",108,16,128,5000  ], ["Samsung","Galaxy A52","6.5","Super AMOLED",64,32,128,4500  ], ["Xiaomi","POCO F3","6.67","AMOLED",48,20,256,4520  ], ["Realme","9 Pro","6.6","IPS",64,16,128,5000  ], ["Samsung","Galaxy S20 FE","6.5","Super AMOLED",12,32,256,4500  ], ["Samsung","Galaxy A23","6.5","PLS",50,8,64,5000  ], ["Realme","Narzo 50A","6.5","IPS",50,8,64,5860  ], ["Xiaomi","Redmi 10C","6.71","IPS",50,5,64,5000  ], ["Xiaomi","Redmi S2","5.99","IPS",12,16,64,3080  ], ["HUAWEI","Y5p","5.45","IPS",8,5,32,3080  ], ["DOOGEE","S40 Pro","5,4","IPS",13,2,64,3000  ], ["Blackview","BV9800 Pro","6.3","IPS",48,16,128,6580  ], ["Caterpillar","Cat S61","5.2","IPS",16,8,64,4500  ], ["DOOGEE","S97 Pro","6.39","OLED",48,16,128,8500  ], ["Ulefone","Power Armor 14","6.52","IPS",20,16,64,10000  ], ["BQ","6645L Element","6.52","IPS",13,5,32,4000  ], ["BQ","5765L Clever","5.7","IPS",5,2,16,2700  ], ["BQ","6630L Magic L","6.53","IPS",13,8,32,4920  ], ["HONOR","X8","6.7","LTPS",64,16,128,4000  ], ["Nokia","G50","6.82","IPS",48,8,128,5000  ], ["OPPO","Reno 5 Lite","6.43","AMOLED",48,32,128,4310  ], ["HUAWEI","P20 Pro","6.1","AMOLED",40,24,64,4000  ], ["Xiaomi","11 Lite 5G","6.67","Super AMOLED",64,20,128,4250  ], ["BQ","6631G Surf","6.53","IPS",8,2,16,3000  ], ["Samsung","Galaxy A02","6.5","PLS",13,5,32,5000  ], ["Xiaomi","Redmi 9A","6.53","IPS",13,5,32,5000  ], ["TCL","20E","6.52","IPS",13,5,64,4000  ], ["OPPO","A16","6.52","IPS",13,8,32,5000  ], ["Xiaomi","Redmi 6A","5.45","IPS",13,5,16,3000  ], ["Xiaomi","Redmi 9","6.53","IPS",13,8,64,5020  ], ["Realme","C21Y","6.5","IPS",13,5,32,5000  ], ["Samsung","Galaxy A12","6.5","PLS",48,8,32,5000  ], ["Apple","iPhone 13 Pro","6.1","OLED",12,12,128,3240  ], ["Samsung","Galaxy A53","6.5","Super AMOLED",64,32,128,5000  ] ]
+
+body
+
+.form
+    details
+      summary
+        | График
+      form
+        table
+          tr
+            td
+              h4 Значение по OX
+            td
+              h4 Результат
+          tr
+            td
+              label
+                input(type="radio", name="graph")
+                | Производитель
+            td
+              p
+                input(type="checkbox")
+                | Максимальная емкость
+              p
+                input(type="checkbox")
+                | Среднеее значение оперативной памяти
+          tr
+            td
+              label
+                input(type="radio", name="graph")
+                | Матрица
+            td
+              p
+                input(type="checkbox")
+                | Минимальная емкость аккумулятора
+              p
+                input(type="checkbox")
+                | Максимальный размер дисплея
+      input(type="submit", value="Построить график")
+    details
+      summary  Фильтр 
+      form
+        p
+          label
+            | Производитель:
+            input#prod(type="text", name="prod")
+            br
+        p
+          label
+            | Основная камера:
+            input#maincam(type="text", name="maincam")
+            br
+        p
+          label
+            | Фронтальная камера:
+            input#frontcam(type="text", name="frontcam")
+            br
+        p
+          | Размер дисплея:
+          label
+            br
+            | от
+            input#min(type="text", name="min")
+          label
+            | до
+            input#max(type="text", name="max")
+            br
+        input(type="submit", value="Найти")
+    details
+      summary  Сортировка 
+      form
+        label(for="sort-by") Первый уровень:
+        select
+          option(value="year") Размер дисплея
+          option(value="processor-type") Основная камера
+          option(value="cores") Фронтальная камера
+          option(value="base-frequency") Встроенная память
+          option(value="cache-l1") Аккумулятор
+        label(for="sort-order") Порядок сортировки:
+        select
+          option(value="asc") По возрастанию
+          option(value="desc") По убыванию
+        input(type="submit", value="Сортировать")
+      form
+        label(for="sort-by") Второй уровень:
+        select
+          option(value="year") Размер дисплея
+          option(value="processor-type") Основная камера
+          option(value="cores") Фронтальная камера
+          option(value="base-frequency") Встроенная память
+          option(value="cache-l1") Аккумулятор
+        label(for="sort-order") Порядок сортировки:
+        select
+          option(value="asc") По возрастанию
+          option(value="desc") По убыванию
+        input(type="submit", value="Сортировать")
+      form
+        label(for="sort-by") Третий уровень:
+        select
+          option(value="year") Размер дисплея
+          option(value="processor-type") Основная камера
+          option(value="cores") Фронтальная камера
+          option(value="base-frequency") Встроенная память
+          option(value="cache-l1") Аккумулятор
+        label(for="sort-order") Порядок сортировки:
+        select
+          option(value="asc") По возрастанию
+          option(value="desc") По убыванию
+        input(type="submit", value="Сортировать")
+
+
+
+table.tab 
+    each row in dataTable 
+        tr.trow
+            each cell in row 
+                td.tdow= cell
+        
+    
