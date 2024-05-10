@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SVG Animation</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+<body>
+    <form id="setting">
+        <div id="coordsDiv">
+            <p>Координаты рисунка<br>
+                <label for="cx">x: </label>
+                <input type="number" id="cx" value="300" max=600 min=0><br>
+                <label for="cy">y: </label>
+                <input type="number" id="cy" value="300" max=600 min=0>
+            </p>
+        </div>
+        <div id="transformation">Масштаб<br>
+            <div id="scaleXDiv">
+                <label for="scaleX">по X: </label>
+                <input type="number" id="scaleX" value="1"><br>
+            </div>
+            <div id="scaleYDiv">
+                <label for="scaleY">по Y: </label>
+                <input type="number" id="scaleY" value="1"><br>
+            </div>
+            <div id="rotationDiv">
+                <label for="rotation">Поворот: </label>
+                <input type="number" id="rotation" value="0">
+            </div>
+        </div>
+        <p>Анимация<br>
+            <label for="animation">Включить анимацию?</label>
+            <input type="checkbox" id="animation" onchange="toggleAnimation()"><br>
+        <div id="animationDiv" style="display: none;">
+            <label for="animationType">Тип анимации: </label>
+            <select id="animationType">
+                <option value="linear">linear</option>
+                <option value="elastic">elastic</option>
+                <option value="bounce">bounce</option>
+            </select>
+        </div>
+        </p>
+
+        <div id="finishCoords">Конечные координаты<br>
+            <label for="cx_finish">x: </label>
+            <input type="number" id="cx_finish" placeholder="x"><br>
+            <label for="cy_finish">y: </label>
+            <input type="number" id="cy_finish" placeholder="y">
+        </div>
+        <div id="finishTransformation">Масштаб<br>
+            <label for="scaleX_finish">по X: </label>
+            <input type="number" id="scaleX_finish" placeholder="scaleX"><br>
+            <label for="scaleY_finish">по Y: </label>
+            <input type="number" id="scaleY_finish" placeholder="scaleY"><br>
+            <label for="rotation_finish">Поворот: </label>
+            <input type="number" id="rotation_finish" placeholder="rotation">
+        </div>
+
+        <p>Тип анимации<br>
+            <label for="animationPath">Перемещение вдоль пути?</label>
+            <input type="checkbox" id="animationPath" onchange="togglePathAnimation()">
+        </p>
+        <div id="pathDiv" style="display: none;">
+            <label for="pathType">Путь перемещения: </label>
+            <select id="pathType">
+                <option value="letterG">Буквой «Г»</option>
+                <option value="circle">По кругу</option>
+                <option value="eight">Восьмерка</option> <!-- Добавляем восьмерку -->
+            </select>
+        </div>
+
+        <div id="animationSpeedDiv">
+            <label for="animationSpeed">Скорость анимации: </label>
+            <select id="animationSpeed">
+                <option value="slow">Медленно</option>
+                <option value="normal" selected>Нормально</option>
+                <option value="fast">Быстро</option>
+            </select>
+        </div>
+
+        <input type="button" id="drawButton" value="Нарисовать">
+        <input type="button" id="animateButton" value="Анимировать" style="display: none;">
+        <input type="button" id="clearButton" value="Очистить">
+    </form>
+    <svg id="animationSvg" width="600" height="600"></svg>
+    <script>
+        //инициализация svg элемента
+        const width = 600;
+        const height = 600;
+        let svg = d3.select("#animationSvg")
+            .attr("width", width)
+            .attr("height", height);
+
+        // создаем изображение смайлик
+        // рисуем его относительно точки (0, 0)
+        function drawSmile() {
+            let smile = svg.append("g")
+                .style("stroke", "brown")
+                .style("stroke-width", 2)
+                .style("fill", "brown");
+            //лицо
+            smile.append("circle")
+                .attr("cx", 0)
+                .attr("cy", 0)
+                .attr("r", 50)
+                .style("fill", "yellow");
+            //левый глаз
+            smile.append("circle")
+                .attr("cx", -20)
+                .attr("cy", -10)
+                .attr("r", 5);
+            //правый глаз
+            smile.append("circle")
+                .attr("cx", 20)
+                .attr("cy", -10)
+                .attr("r", 5);
+            // улыбка
+            let arc = d3.arc()
+                .innerRadius(35)
+                .outerRadius(35);
+
+            smile.append("path")
+                .attr("d", arc({
+                    startAngle: Math.PI / 3 * 2,
+                    endAngle: Math.PI / 3 * 4
+                }))
+                .style("stroke", "brown")
+            let bow = smile.append("g")
+                .style("fill", "pink");
+
+            // левая часть бантика
+            bow.append("ellipse")
+                .attr("cx", -30)
+                .attr("cy", -60)
+                .attr("rx", 20)
+                .attr("ry", 10);
+
+            // правая часть бантика
+            bow.append("ellipse")
+                .attr("cx", 30)
+                .attr("cy", -60)
+                .attr("rx", 20)
+                .attr("ry", 10);
+
+            // центр бантика
+            bow.append("circle")
+                .attr("cx", 0)
+                .attr("cy", -60)
+                .attr("r", 10);
+            return smile
+        }
+
+        let draw = () => {
+            let dataForm = document.getElementById('setting');
+            let pict = drawSmile();
+            let scaleX = parseFloat(dataForm.scaleX.value);
+            let scaleY = parseFloat(dataForm.scaleY.value);
+            let rotation = parseFloat(dataForm.rotation.value);
+            pict.attr("transform", `translate(${dataForm.cx.value}, ${dataForm.cy.value}) 
+                                  scale(${scaleX}, ${scaleY}) 
+                                  rotate(${rotation})`);
+        }
+
+        let clear = () => {
+            svg.selectAll('*').remove();
+        }
+
+        let toggleAnimation = () => {
+            let animationCheckbox = document.getElementById('animation');
+            let drawButton = document.getElementById('drawButton');
+            let animateButton = document.getElementById('animateButton');
+            let animationDiv = document.getElementById('animationDiv');
+            let finishCoords = document.getElementById('finishCoords');
+            let finishTransformation = document.getElementById('finishTransformation');
+
+            if (animationCheckbox.checked) {
+                drawButton.style.display = 'none';
+                animateButton.style.display = 'inline';
+                animationDiv.style.display = 'inline';
+                finishCoords.style.display = 'block'; // Показываем дополнительные поля для координат
+                finishTransformation.style.display = 'block'; // Показываем дополнительные поля для параметров анимации
+            } else {
+                drawButton.style.display = 'inline';
+                animateButton.style.display = 'none';
+                animationDiv.style.display = 'none';
+                finishCoords.style.display = 'none'; // Скрываем дополнительные поля для координат
+                finishTransformation.style.display = 'none'; // Скрываем дополнительные поля для параметров анимации
+            }
+        }
+
+        toggleAnimation(); // Добавьте эту строку
+
+        let runAnimation = (dataForm) => {
+            let animationPathCheckbox = document.getElementById('animationPath');
+            let animationSpeed = document.getElementById('animationSpeed').value; // Получаем выбранную скорость анимации
+        
+            // Устанавливаем значение duration в зависимости от выбранной скорости анимации
+            let duration;
+            switch (animationSpeed) {
+                case 'slow':
+                    duration = 10000; // Примерное значение для медленной анимации
+                    break;
+                case 'normal':
+                    duration = 6000; // Примерное значение для нормальной анимации
+                    break;
+                case 'fast':
+                    duration = 3000; // Примерное значение для быстрой анимации
+                    break;
+                default:
+                    duration = 6000; // Значение по умолчанию
+            }
+        
+            if (animationPathCheckbox.checked) {
+                let pathType = document.getElementById('pathType').value;
+                let path = drawPath(pathType); // Создаем путь в соответствии с выбранной опцией
+                let pict = drawSmile(); // Рисунок уже создан заранее
+        
+                // Функция для движения вдоль пути
+                function translateAlong(path) {
+                    let l = path.getTotalLength();
+                    return function (d, i, a) {
+                        return function (t) {
+                            let p = path.getPointAtLength(t * l);
+                            return `translate(${p.x},${p.y})`;
+                        };
+                    };
+                }
+        
+                pict.transition()
+                    .ease(d3.easeLinear) // Устанавливаем плавность движения (можно изменить в зависимости от настроек)
+                    .duration(duration) // Устанавливаем продолжительность анимации
+                    .attrTween('transform', translateAlong(path.node())); // Применяем анимацию движения вдоль пути
+            } else {
+                let pict = drawSmile();
+                let easeType = dataForm.animationType.value; // Получаем тип анимации
+        
+                // Определяем функцию плавности в зависимости от выбранного типа
+                let easeFunction;
+                switch (easeType) {
+                    case 'linear':
+                        easeFunction = d3.easeLinear;
+                        break;
+                    case 'elastic':
+                        easeFunction = d3.easeElastic;
+                        break;
+                    case 'bounce':
+                        easeFunction = d3.easeBounce;
+                        break;
+                    default:
+                        easeFunction = d3.easeLinear;
+                }
+        
+                let scaleX_finish = parseFloat(dataForm.scaleX_finish.value);
+                let scaleY_finish = parseFloat(dataForm.scaleY_finish.value);
+                let rotation_finish = parseFloat(dataForm.rotation_finish.value);
+        
+                pict.attr("transform", `translate(${dataForm.cx.value}, ${dataForm.cy.value}) scale(${dataForm.scaleX.value}, ${dataForm.scaleY.value}) rotate(${dataForm.rotation.value})`)
+                    .transition()
+                    .duration(duration) // Устанавливаем продолжительность анимации
+                    .ease(easeFunction) // Используем выбранную функцию плавности
+                    .attr("transform", `translate(${dataForm.cx_finish.value}, ${dataForm.cy_finish.value}) scale(${scaleX_finish}, ${scaleY_finish}) rotate(${rotation_finish})`);
+            }
+        }
+        
+        
+        
+
+        function translateAlong(path) {
+            const length = path.getTotalLength();
+            return function () {
+                return function (t) {
+                    const { x, y } = path.getPointAtLength(t * length);
+                    return `translate(${x},${y})`;
+                }
+            }
+        }
+
+
+        document.getElementById('animateButton').addEventListener('click', function () {
+            runAnimation(document.getElementById('setting'));
+        });
+
+        let togglePathAnimation = () => {
+            let animationPathCheckbox = document.getElementById('animationPath');
+            let coordsDiv = document.getElementById('coordsDiv'); // Теперь этот элемент найден
+            let pathDiv = document.getElementById('pathDiv');
+
+            if (animationPathCheckbox.checked) {
+                coordsDiv.style.display = 'none';
+                pathDiv.style.display = 'block';
+            } else {
+                coordsDiv.style.display = 'block';
+                pathDiv.style.display = 'none';
+            }
+        }
+
+        document.getElementById('drawButton').addEventListener('click', draw);
+        document.getElementById('clearButton').addEventListener('click', clear);
+
+        // создаем массив точек, расположенных буквой "Г"
+        function createPathG() {
+            let data = [];
+            const padding = 100;
+            //начальное положение рисунка
+            let posX = padding;
+            let posY = height - padding;
+            const h = 5;
+            // координаты y - уменьшаются, x - постоянны
+            while (posY > padding) {
+                data.push({ x: posX, y: posY });
+                posY -= h;
+            }
+
+            // координаты y - постоянны, x - увеличиваются
+            while (posX < width - padding) {
+                data.push({ x: posX, y: posY });
+                posX += h;
+            }
+            return data
+        }
+
+        function createPathCircle() {
+            let data = [];
+            // Используем параметрическую форму описания круга
+            // Центр находится в центре SVG-элемента, а радиус равен трети высоты/ширины
+            for (let t = 0; t <= Math.PI * 2; t += 0.1) {
+                data.push(
+                    { x: width / 2 + width / 3 * Math.sin(t), y: height / 2 + height / 3 * Math.cos(t) }
+                );
+            }
+            return data
+        }
+
+        function createPathEight() {
+                let data = [];
+                for (let t = 0; t <= Math.PI * 2; t += 0.1) {
+                    data.push(
+                        { x: width / 2 + width / 18 * (2* Math.cos(t) - Math.cos(3*t)), y: height / 2 - height / 10 * (3 * Math.sin(t) - Math.sin(3*t)) }
+                    );
+                }
+                return data;
+            }
+            
+      
+        
+
+        let drawPath = (typePath) => {
+            // создаем массив точек пути в зависимости от параметра
+            let dataPoints;
+            switch (typePath) {
+                case "letterG":
+                    dataPoints = createPathG();
+                    break;
+                case "circle":
+                    dataPoints = createPathCircle();
+                    break;
+                case "eight":
+                    dataPoints = createPathEight();
+                    break;
+                default:
+                    dataPoints = createPathG(); // По умолчанию рисуем букву "Г"
+            }
+            const line = d3.line()
+                .x((d) => d.x)
+                .y((d) => d.y);
+            // создаем путь на основе массива точек
+            const path = svg.append('path')
+                .attr('d', line(dataPoints))
+                .attr('stroke', 'none')
+                .attr('fill', 'none');
+        
+            return path;
+        }
+    </script>
+</body>
+
+</html>
