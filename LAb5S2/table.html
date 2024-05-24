@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Смартфоны</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="http://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <h3>Смартфоны</h3>
+    <div>
+        <form>
+            <p>Значение по оси OX</p>
+            <input type="radio" name="ox" value="Производитель" checked> Производитель<br>
+            <input type="radio" name="ox" value="Матрица"> Матрица<br>
+            <p>Значение по оси OY</p>
+            <input type="checkbox" name="oy" value="Аккумулятор" checked> Максимальная емкость<br>
+            <input type="checkbox" name="oy" value="Оперативная/встроенная память (Гб)"> Среднее значение оперативной памяти<br>
+            <input type="checkbox" name="oy" value="sizeOf"> Максимальный размер дисплея<br>
+            <!-- <input type="checkbox" name="oy" value="minBattery"> Минимальная емкость аккумулятора<br> -->
+            <p>Тип диаграммы</p>
+            <input type="radio" name="chartType" value="scatter" checked> Точечная диаграмма<br>
+            <input type="radio" name="chartType" value="bar"> Столбчатая диаграмма<br>
+            <p>
+                <input type="button" id="drawGraphButton" value="Построить">
+            </p>
+        </form>
+        <svg width="800" height="600"></svg>
+    </div>
+
+    <div class="table">
+        <p>
+            <input type="button" id="showTable" value="Показать таблицу">
+        </p>
+        <table></table>
+    </div>
+
+    <script src="program.js"></script>
+    <script src="data.js"></script>
+</body>
+</html>
