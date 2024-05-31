@@ -1,0 +1,41 @@
+.navbar {
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8%;
+    background-color: lightgray;
+    align-items: stretch;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    width: 50%;
+}
+
+.menu a {
+    color: white;
+    background-color: gray;
+    flex-basis: 10%;
+    padding: 1%;
+    margin: 0 1%;
+    text-decoration: none;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.menu a:hover {
+    background-color: black;
+}
